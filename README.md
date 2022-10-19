@@ -17,4 +17,4 @@ Flutter
 3. If you are using Android studio, run pub get by opening the pubspec.yaml file. Otherwise, pub get from the terminal at the root project folder.
 4. Once that is done, you can open your emulator(does not come pre-installed) or connect your physical device and then click on run or run pub get
 
-### Maintainer in charge [Nigel Dias](https://github.com/nigeldias27)
+### Maintained by: [Nigel Dias](https://github.com/nigeldias27)
