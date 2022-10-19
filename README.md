@@ -1,16 +1,20 @@
-# notes
+# Notes
 
-A new Flutter application.
+This repository is a simple note taking app which works as shown from this [video](https://drive.google.com/file/d/17DlkT_nGWSvbC1_Ct5cnbM6yfGN7MaCo/view)
 
-## Getting Started
+## Tech Stack
 
-This project is a starting point for a Flutter application.
+Flutter
 
-A few resources to get you started if this is your first Flutter project:
+## Prerequisites
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+[Flutter SDK](https://docs.flutter.dev/get-started/install) and a editor like Android Studio or VS code.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to run
+
+1. Fork this repository
+2. Navigate to the forked repository then clone it.
+3. If you are using Android studio, run pub get by opening the pubspec.yaml file. Otherwise, pub get from the terminal at the root project folder.
+4. Once that is done, you can open your emulator(does not come pre-installed) or connect your physical device and then click on run or run pub get
+
+## Maintainer in charge [Nigel Dias](https://github.com/nigeldias27)

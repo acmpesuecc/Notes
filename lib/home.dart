@@ -175,82 +175,80 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 return SliverAnimatedList(
                     key: key,
                     initialItemCount: some_text.length,
-                    itemBuilder: (context, index, animation) =>
-                        some_text.length != 0
-                            ? Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ScaleTransition(
-                                  scale: animation,
-                                  child: Swipe(
-                                    onSwipeRight: () async {
-                                      some_text.removeAt(index);
-                                      _rem(some_text.join('|'));
-                                      key.currentState!.removeItem(
-                                          index,
-                                          (context, animation) => Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: SlideTransition(
-                                                  position: Tween<Offset>(
-                                                    begin: const Offset(1, 0),
-                                                    end: Offset(0, 0),
-                                                  ).animate(animation),
-                                                  child: some_widget(
-                                                      index: index,
-                                                      some_text: some_text),
-                                                ),
-                                              ));
-                                      /*
+                    itemBuilder: (context, index, animation) => some_text
+                            .isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ScaleTransition(
+                              scale: animation,
+                              child: Swipe(
+                                onSwipeRight: () async {
+                                  await some_text.removeAt(index);
+                                  await _rem(some_text.join('|'));
+                                  key.currentState!.removeItem(
+                                      index,
+                                      (context, animation) => Padding(
+                                            padding: EdgeInsets.all(8),
+                                            child: SlideTransition(
+                                              position: Tween<Offset>(
+                                                begin: const Offset(1, 0),
+                                                end: Offset(0, 0),
+                                              ).animate(animation),
+                                              child: some_widget(
+                                                  index: index,
+                                                  some_text: some_text),
+                                            ),
+                                          ));
+                                  /*
                                       await Future.delayed(
                                           Duration(milliseconds: 350), () {});
                                       some_text.removeAt(index);
                                       _rem(some_text.join('|'));*/
-                                    },
-                                    onSwipeLeft: () async {
-                                      some_text.removeAt(index);
-                                      _rem(some_text.join('|'));
-                                      key.currentState!.removeItem(
-                                          index,
-                                          (context, animation) => Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: SlideTransition(
-                                                  position: Tween<Offset>(
-                                                    begin: const Offset(-1, 0),
-                                                    end: Offset(0, 0),
-                                                  ).animate(animation),
-                                                  child: some_widget(
-                                                      index: index,
-                                                      some_text: some_text),
-                                                ),
-                                              ));
-                                    },
-                                    child: some_widget(
-                                        index: index, some_text: some_text),
+                                },
+                                onSwipeLeft: () async {
+                                  some_text.removeAt(index);
+                                  _rem(some_text.join('|'));
+                                  key.currentState!.removeItem(
+                                      index,
+                                      (context, animation) => Padding(
+                                            padding: EdgeInsets.all(8),
+                                            child: SlideTransition(
+                                              position: Tween<Offset>(
+                                                begin: const Offset(-1, 0),
+                                                end: Offset(0, 0),
+                                              ).animate(animation),
+                                              child: some_widget(
+                                                  index: index,
+                                                  some_text: some_text),
+                                            ),
+                                          ));
+                                },
+                                child: some_widget(
+                                    index: index, some_text: some_text),
+                              ),
+                            ),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.only(
+                                top: MediaQuery.of(context).size.height * 0.2),
+                            child: Column(
+                              children: const [
+                                Icon(
+                                  Icons.notes,
+                                  color: Colors.white70,
+                                  size: 50,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 8.0),
+                                  child: Text(
+                                    'No notes have been added',
+                                    style: TextStyle(
+                                        color: Colors.white70, fontSize: 20),
                                   ),
-                                ),
-                              )
-                            : Padding(
-                                padding: EdgeInsets.only(
-                                    top: MediaQuery.of(context).size.height *
-                                        0.2),
-                                child: Column(
-                                  children: const [
-                                    Icon(
-                                      Icons.notes,
-                                      color: Colors.white70,
-                                      size: 50,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 8.0),
-                                      child: Text(
-                                        'No notes have been added',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 20),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ));
+                                )
+                              ],
+                            ),
+                          ));
               } else {
                 return SliverToBoxAdapter(
                   child: CircularProgressIndicator(),
