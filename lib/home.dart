@@ -30,6 +30,8 @@ Future<String> _read() async {
   return text;
 }
 
+
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -59,6 +61,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          )
+        ],
+        centerTitle: true,
+      ),
       backgroundColor: Colors.deepPurple[200],
       body: CustomScrollView(
         slivers: [
@@ -127,35 +139,33 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                flex: 1,
-                                child: TextButton(
-                                    onPressed: () async {
-                                      FocusScopeNode currentFocus =
-                                          FocusScope.of(context);
+                              TextButton(
+                                  onPressed: () async {
+                                    FocusScopeNode currentFocus =
+                                        FocusScope.of(context);
 
-                                      if (!currentFocus.hasPrimaryFocus) {
-                                        currentFocus.unfocus();
-                                      }
-                                      print(some_text);
-                                      await Future.delayed(
-                                          Duration(milliseconds: 650), () {
-                                        _write(notes.text.toString());
-                                        some_text.insert(
-                                            0, notes.text.toString());
-                                      });
-                                      key.currentState!.insertItem(0,
-                                          duration:
-                                              Duration(milliseconds: 600));
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
+                                    print(some_text);
+                                    await Future.delayed(
+                                        Duration(milliseconds: 650), () {
+                                      _write(notes.text.toString());
+                                      some_text.insert(
+                                          0, notes.text.toString());
+                                    });
+                                    key.currentState!.insertItem(0,
+                                        duration: Duration(milliseconds: 600));
 
-                                      print(_read());
-                                      print(some_text);
-                                    },
-                                    child: const Icon(
-                                      Icons.add,
-                                      color: Colors.black,
-                                    )),
-                              )
+                                    print(_read());
+                                    print(some_text);
+                                  },
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                  )),
+                              ElevatedButton(
+                                  onPressed: () {}, child: Text("Edit"))
                             ],
                           ),
                         ),
